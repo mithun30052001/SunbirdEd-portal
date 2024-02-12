@@ -238,4 +238,41 @@ describe('SearchFilterComponent', () => {
      component.getFramework(obj);
      expect(mockContentSearchService.fetchFilter).toHaveBeenCalled();
     });
+
+    describe('sortFilters', () => {
+        it('should sort filters by the specified filterBy key', () => {
+            const filters = {
+            filter1: [{ name: 'C' }, { name: 'A' }, { name: 'B' }],
+            filter2: [{ name: 'Z' }, { name: 'X' }, { name: 'Y' }]
+            };
+            const expectedSortedFilters = {
+            filter1: [{ name: 'A' }, { name: 'B' }, { name: 'C' }],
+            filter2: [{ name: 'X' }, { name: 'Y' }, { name: 'Z' }]
+            };
+            const sortedFilters = component['sortFilters']({ filters, filterBy: 'name' });
+            expect(sortedFilters).toEqual(expectedSortedFilters);
+        });
+
+        it('should omit keys specified in omitKeys array from sorting', () => {
+            const filters = {
+            filter1: [{ name: 'C' }, { name: 'A' }, { name: 'B' }],
+            filter2: [{ name: 'Z' }, { name: 'X' }, { name: 'Y' }]
+            };
+            const omitKeys = ['filter1'];
+            const expectedSortedFilters = {
+            filter1: [{ name: 'C' }, { name: 'A' }, { name: 'B' }],
+            filter2: [{ name: 'X' }, { name: 'Y' }, { name: 'Z' }]
+            };
+            const sortedFilters = component['sortFilters']({ filters, omitKeys });
+            expect(sortedFilters).toEqual(expectedSortedFilters);
+        });
+
+        it('should handle empty filters object', () => {
+            const filters = {};
+            const expectedSortedFilters = {};
+            const sortedFilters = component['sortFilters']({ filters });
+            expect(sortedFilters).toEqual(expectedSortedFilters);
+        });
+    });
+
 });
