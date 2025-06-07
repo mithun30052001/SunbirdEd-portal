@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "@project-sunbird/discussion-service": "0.0.6",
-    "@project-sunbird/ext-framework-server": "0.1.28",
+    "@project-sunbird/ext-framework-server": "8.0.0",
     "@project-sunbird/form-service": "0.0.15",
     "@project-sunbird/logger": "0.0.12",
     "@project-sunbird/review-comment": "0.0.8",
@@ -96,7 +96,7 @@
     "jsonwebtoken": "9.0.0",
     "jwks-rsa": "2.0.4",
     "kafka-node": "4.0.0",
-    "keycloak-connect": "git+https://github.com/project-sunbird/keycloak-nodejs-connect.git#release-2.5.0",
+    "keycloak-connect": "22.0.0",
     "lodash": "4.17.21",
     "mathjax-full": "3.0.0",
     "mobile-detect": "1.4.2",
